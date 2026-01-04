@@ -240,7 +240,7 @@ class CheckoutView extends GetView<CheckoutController> {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
+            color: const Color.fromRGBO(0, 0, 0, 0.2),
             blurRadius: 10,
             offset: const Offset(0, -3),
           ),

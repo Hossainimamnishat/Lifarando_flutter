@@ -4,16 +4,16 @@ A Flutter food delivery application built with GetX state management, inspired b
 
 ## Features
 
-### ✨ Core Features
-- 🏠 **Home Screen** - Browse nearby restaurants with filters
-- 🔍 **Search** - Find restaurants and dishes
-- 🍕 **Restaurant Details** - View menu items with categories
-- 🛒 **Shopping Cart** - Add items, manage quantities
-- 💳 **Checkout** - Place orders with delivery details
-- 📦 **Order History** - Track your past orders
-- 👤 **Profile** - Manage user settings
+###  Core Features
+- **Home Screen** - Browse nearby restaurants with filters
+-  **Search** - Find restaurants and dishes
+-  **Restaurant Details** - View menu items with categories
+-  **Shopping Cart** - Add items, manage quantities
+-  **Checkout** - Place orders with delivery details
+-  **Order History** - Track your past orders
+-  **Profile** - Manage user settings
 
-### 🎨 UI Features
+###  UI Features
 - Clean, modern Lieferando-inspired design
 - Orange theme (#FF8000)
 - Responsive layouts
@@ -220,12 +220,12 @@ Using **GetX** for:
 ## Color Scheme
 
 ```dart
-Primary Orange: #FF8000
-Primary Dark: #E67300
-Accent: #FFB84D
-Background: #F5F5F5
-Text Primary: #2E3333
-Text Secondary: #757575
+- Primary Orange: `#FF8000`
+- Primary Dark: `#E67300`
+- Accent: `#FFB84D`
+- Background: `#F5F5F5`
+- Text Primary: `#2E3333`
+- Text Secondary: `#757575`
 ```
 
 ## Next Steps / TODO
