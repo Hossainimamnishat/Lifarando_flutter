@@ -16,7 +16,75 @@ class ProfileView extends GetView<ProfileController> {
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
-            onPressed: () {},
+            onPressed: () {
+              Get.bottomSheet(
+                Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 4,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      ListTile(
+                        leading: const Icon(Icons.settings, color: AppColors.primary),
+                        title: const Text('Settings'),
+                        onTap: () {
+                          Get.back();
+                          Get.snackbar('Settings', 'Settings page coming soon');
+                        },
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.edit, color: AppColors.primary),
+                        title: const Text('Edit Profile'),
+                        onTap: () {
+                          Get.back();
+                          Get.snackbar('Edit Profile', 'Edit profile page coming soon');
+                        },
+                      ),
+                      const Divider(),
+                      ListTile(
+                        leading: const Icon(Icons.logout, color: Colors.red),
+                        title: const Text(
+                          'Logout',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                        onTap: () {
+                          Get.back();
+                          // Show logout confirmation
+                          Get.defaultDialog(
+                            title: 'Logout',
+                            middleText: 'Are you sure you want to logout?',
+                            textConfirm: 'Yes, Logout',
+                            textCancel: 'Cancel',
+                            confirmTextColor: Colors.white,
+                            cancelTextColor: AppColors.textPrimary,
+                            buttonColor: Colors.red,
+                            backgroundColor: Colors.white,
+                            radius: 12,
+                            onConfirm: () {
+                              Get.back();
+                              controller.logout();
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 16),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -153,25 +221,44 @@ class ProfileView extends GetView<ProfileController> {
   }
 
   Widget _buildLogoutButton() {
-    return ElevatedButton(
+    return ElevatedButton.icon(
       onPressed: () {
         Get.defaultDialog(
           title: 'Logout',
           middleText: 'Are you sure you want to logout?',
-          textConfirm: 'Yes',
-          textCancel: 'No',
+          textConfirm: 'Yes, Logout',
+          textCancel: 'Cancel',
           confirmTextColor: Colors.white,
+          cancelTextColor: AppColors.textPrimary,
+          buttonColor: Colors.red,
+          backgroundColor: Colors.white,
+          radius: 12,
           onConfirm: () {
-            Get.back();
-            Get.snackbar('Logged Out', 'You have been logged out successfully');
+            Get.back(); // Close dialog
+            controller.logout(); // Call logout method
+          },
+          onCancel: () {
+            Get.back(); // Just close dialog
           },
         );
       },
+      icon: const Icon(Icons.logout),
+      label: const Text(
+        'Logout',
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
         padding: const EdgeInsets.symmetric(vertical: 16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        elevation: 2,
       ),
-      child: const Text('Logout'),
     );
   }
 }
