@@ -48,7 +48,7 @@ android {
         }
     }
 
-    packagingOptions {
+    packaging {
         resources {
             excludes += listOf(
                 "META-INF/DEPENDENCIES",
@@ -67,3 +67,10 @@ android {
 flutter {
     source = "../.."
 }
+
+dependencies {
+    implementation("com.google.android.play:core:1.10.3")
+    // optional but recommended for newer playcore task APIs:
+    implementation("com.google.android.play:core-common:2.0.3")
+}
+
