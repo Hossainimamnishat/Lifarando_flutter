@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 import '../../../core/theme/app_colors.dart';
@@ -8,7 +9,6 @@ import '../../search/views/search_view.dart';
 import '../../orders/views/orders_view.dart';
 import '../../profile/views/profile_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -17,18 +17,53 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final cartController = Get.find<CartController>();
 
-    return Obx(() {
-      switch (controller.currentIndex.value) {
-        case 1:
-          return const SearchView();
-        case 2:
-          return const OrdersView();
-        case 3:
-          return const ProfileView();
-        default:
-          return _buildHomeContent(context, cartController);
-      }
-    });
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) async {
+        if (didPop) return;
+
+        // If not on home tab, go back to home tab
+        if (controller.currentIndex.value != 0) {
+          controller.changeTab(0);
+          return;
+        }
+
+        // If on home tab, show exit confirmation
+        final shouldExit = await Get.dialog<bool>(
+          AlertDialog(
+            title: const Text('Exit App'),
+            content: const Text('Do you want to exit the app?'),
+            actions: [
+              TextButton(
+                onPressed: () => Get.back(result: false),
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () => Get.back(result: true),
+                child: const Text('Exit'),
+              ),
+            ],
+          ),
+        );
+
+        if (shouldExit == true) {
+          // Exit the app
+          SystemNavigator.pop();
+        }
+      },
+      child: Obx(() {
+        switch (controller.currentIndex.value) {
+          case 1:
+            return const SearchView();
+          case 2:
+            return const OrdersView();
+          case 3:
+            return const ProfileView();
+          default:
+            return _buildHomeContent(context, cartController);
+        }
+      }),
+    );
   }
 
   Widget _buildHomeContent(BuildContext context, CartController cartController) {
@@ -240,7 +275,7 @@ class HomeView extends GetView<HomeController> {
             child: Icon(
               Icons.fastfood,
               size: 120,
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.white.withValues(alpha: 0.2),
             ),
           ),
         ],

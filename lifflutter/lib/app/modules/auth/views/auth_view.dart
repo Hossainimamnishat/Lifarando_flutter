@@ -8,41 +8,54 @@ class AuthView extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 40),
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        // Prevent back button - show dialog or do nothing
+        Get.snackbar(
+          'Exit App',
+          'Press back again to exit',
+          snackPosition: SnackPosition.BOTTOM,
+          duration: const Duration(seconds: 2),
+        );
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 40),
 
-              // Join for more perks card
-              _buildPerksCard(),
+                // Join for more perks card
+                _buildPerksCard(),
 
-              const SizedBox(height: 24),
+                const SizedBox(height: 24),
 
-              // Need help card
-              _buildHelpCard(),
+                // Need help card
+                _buildHelpCard(),
 
-              const SizedBox(height: 40),
+                const SizedBox(height: 40),
 
-              // Settings section
-              _buildSettingsSection(),
+                // Settings section
+                _buildSettingsSection(),
 
-              const SizedBox(height: 40),
+                const SizedBox(height: 40),
 
-              // How are we doing section
-              _buildFeedbackSection(),
+                // How are we doing section
+                _buildFeedbackSection(),
 
-              const SizedBox(height: 24),
+                const SizedBox(height: 24),
 
-              // Continue as guest button
-              _buildGuestButton(),
+                // Continue as guest button
+                _buildGuestButton(),
 
-              const SizedBox(height: 40),
-            ],
+                const SizedBox(height: 40),
+              ],
+            ),
           ),
         ),
       ),
