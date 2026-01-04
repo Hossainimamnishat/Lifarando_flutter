@@ -20,31 +20,42 @@ class ProfileView extends GetView<ProfileController> {
           ),
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          _buildProfileHeader(),
-          const SizedBox(height: 24),
-          _buildMenuSection('Account', [
-            _buildMenuItem(Icons.person_outline, 'Personal Info', () {}),
-            _buildMenuItem(Icons.location_on_outlined, 'Addresses', () {}),
-            _buildMenuItem(Icons.payment, 'Payment Methods', () {}),
-          ]),
-          const SizedBox(height: 16),
-          _buildMenuSection('Preferences', [
-            _buildMenuItem(Icons.notifications_outlined, 'Notifications', () {}),
-            _buildMenuItem(Icons.language, 'Language', () {}),
-            _buildMenuItem(Icons.dark_mode_outlined, 'Dark Mode', () {}),
-          ]),
-          const SizedBox(height: 16),
-          _buildMenuSection('Support', [
-            _buildMenuItem(Icons.help_outline, 'Help Center', () {}),
-            _buildMenuItem(Icons.info_outline, 'About', () {}),
-            _buildMenuItem(Icons.privacy_tip_outlined, 'Privacy Policy', () {}),
-          ]),
-          const SizedBox(height: 24),
-          _buildLogoutButton(),
-        ],
+      body: SafeArea(
+        child: ListView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          padding: const EdgeInsets.all(16),
+          children: [
+            _buildProfileHeader(),
+            const SizedBox(height: 24),
+            _buildMenuSection('Account', [
+              _buildMenuItem(Icons.person_outline, 'Personal Info', () {}),
+              _buildMenuItem(Icons.location_on_outlined, 'Addresses', () {}),
+              _buildMenuItem(Icons.payment, 'Payment Methods', () {}),
+            ]),
+            const SizedBox(height: 16),
+            _buildMenuSection('Preferences', [
+              _buildMenuItem(Icons.notifications_outlined, 'Notifications', () {}),
+              _buildMenuItem(Icons.language, 'Language', () {}),
+              _buildMenuItem(Icons.dark_mode_outlined, 'Dark Mode', () {}),
+            ]),
+            const SizedBox(height: 16),
+            _buildMenuSection('Support', [
+              _buildMenuItem(Icons.help_outline, 'Help Center', () {}),
+              _buildMenuItem(Icons.info_outline, 'About', () {}),
+              _buildMenuItem(Icons.privacy_tip_outlined, 'Privacy Policy', () {}),
+              _buildMenuItem(Icons.description_outlined, 'Terms of Service', () {}),
+            ]),
+            const SizedBox(height: 16),
+            _buildMenuSection('More', [
+              _buildMenuItem(Icons.star_outline, 'Rate Us', () {}),
+              _buildMenuItem(Icons.share_outlined, 'Share App', () {}),
+              _buildMenuItem(Icons.feedback_outlined, 'Send Feedback', () {}),
+            ]),
+            const SizedBox(height: 24),
+            _buildLogoutButton(),
+            const SizedBox(height: 24), // Extra padding at bottom
+          ],
+        ),
       ),
     );
   }

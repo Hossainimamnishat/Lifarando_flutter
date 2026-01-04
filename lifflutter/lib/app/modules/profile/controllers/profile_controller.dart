@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
-  final RxString userName = 'John Doe'.obs;
-  final RxString userEmail = 'john.doe@example.com'.obs;
+  final RxString userName = 'Hossain Imam Nishat'.obs;
+  final RxString userEmail = 'imam.nishat@example.com'.obs;
   final RxString userPhone = '+49 123 456 7890'.obs;
-  final RxString userAddress = 'Berlin, Germany'.obs;
+  final RxString userAddress = 'Munich, Germany'.obs;
 }
 
