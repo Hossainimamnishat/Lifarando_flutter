@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../data/constants/countries.dart';
-import '../../core/theme/app_colors.dart';
+import '../../../data/constants/countries.dart';
+import '../../../core/theme/app_colors.dart';
 
 class CountrySelectionView extends StatelessWidget {
   final String? selectedCountryCode;
