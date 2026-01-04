@@ -1,11 +1,11 @@
-# LiFFlutter - Food Delivery App Clone
+## Color Palette
 
-A Flutter food delivery application built with GetX state management, inspired by Lieferando.
-
-## Features
-
-###  Core Features
-- **Home Screen** - Browse nearby restaurants with filters
+- **Primary Orange** (`#FF8000`): Used for primary actions, main buttons, and key highlights.
+- **Primary Dark** (`#E67300`): Used for pressed/disabled states and darker variants of primary elements.
+- **Accent** (`#FFB84D`): Used for secondary actions, accent elements, and subtle highlights.
+- **Background** (`#F5F5F5`): Used as the main app background color.
+- **Text Primary** (`#2E3333`): Used for main body text and primary labels.
+- **Text Secondary** (`#757575`): Used for secondary text, captions, and less prominent labels.*Home Screen** - Browse nearby restaurants with filters
 -  **Search** - Find restaurants and dishes
 -  **Restaurant Details** - View menu items with categories
 -  **Shopping Cart** - Add items, manage quantities
@@ -22,7 +22,7 @@ A Flutter food delivery application built with GetX state management, inspired b
 - Image caching
 - Shimmer loading effects
 
-### 🏗️ Architecture
+###  Architecture
 - **GetX** - State management, routing, dependency injection
 - **Get CLI** - Clean architecture pattern
 - **MVVM** - Model-View-ViewModel pattern
@@ -219,7 +219,7 @@ Using **GetX** for:
 
 ## Color Scheme
 
-```dart
+```text
 - Primary Orange: `#FF8000`
 - Primary Dark: `#E67300`
 - Accent: `#FFB84D`
@@ -279,4 +279,3 @@ This project is created for educational purposes.
 ---
 
 **Note**: This is a clone/demo project with mock data. For production use, integrate with a real backend API and implement proper authentication, security, and payment systems.
-
