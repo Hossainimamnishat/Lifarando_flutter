@@ -9,7 +9,8 @@ class SplashController extends GetxController {
   }
 
   void _navigateToAuth() {
-    Future.delayed(const Duration(seconds: 2), () {
+    // Reduced delay for faster startup
+    Future.delayed(const Duration(milliseconds: 1500), () {
       Get.offNamed(Routes.AUTH);
     });
   }
