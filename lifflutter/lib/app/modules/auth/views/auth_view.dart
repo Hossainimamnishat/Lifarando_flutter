@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/auth_controller.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../data/constants/countries.dart';
+import 'country_selection_view.dart';
 
 class AuthView extends GetView<AuthController> {
   const AuthView({Key? key}) : super(key: key);
@@ -247,12 +249,7 @@ class AuthView extends GetView<AuthController> {
           ),
         ),
         const SizedBox(height: 16),
-        _buildSettingsItem(
-          icon: Icons.flag,
-          iconColor: Colors.black87,
-          title: 'Country',
-          onTap: () {},
-        ),
+        _buildCountryItem(),
         _buildSettingsItem(
           icon: Icons.navigation,
           iconColor: Colors.black87,
@@ -279,6 +276,50 @@ class AuthView extends GetView<AuthController> {
         ),
       ],
     );
+  }
+
+  Widget _buildCountryItem() {
+    return Obx(() {
+      final country = controller.selectedCountry.value;
+      return InkWell(
+        onTap: () async {
+          final result = await Get.to<Country>(
+            () => CountrySelectionView(
+              selectedCountryCode: controller.selectedCountry.value.code,
+            ),
+          );
+          if (result != null) {
+            controller.selectCountry(result);
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Row(
+            children: [
+              Text(
+                country.flag,
+                style: const TextStyle(fontSize: 24),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Text(
+                  country.name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.black87,
+                  ),
+                ),
+              ),
+              const Icon(
+                Icons.chevron_right,
+                color: Colors.black26,
+                size: 24,
+              ),
+            ],
+          ),
+        ),
+      );
+    });
   }
 
   Widget _buildSettingsItem({
