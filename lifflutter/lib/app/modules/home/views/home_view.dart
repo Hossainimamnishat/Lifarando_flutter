@@ -43,7 +43,7 @@ class HomeView extends GetView<HomeController> {
                 const Icon(Icons.location_on, size: 16, color: AppColors.primary),
                 const SizedBox(width: 4),
                 Text(
-                  'Berlin, Germany',
+                  'Munich, Germany',
                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
                 const Icon(Icons.keyboard_arrow_down, size: 20),
