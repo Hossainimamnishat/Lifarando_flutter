@@ -135,55 +135,8 @@ class LoginController extends GetxController {
     }
   }
 
-  void showDefaultCredentials() {
-    Get.dialog(
-      AlertDialog(
-        title: const Text('Default Login Credentials'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Use these credentials to login:',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            const Text('Email:'),
-            SelectableText(
-              defaultEmail,
-              style: const TextStyle(
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 12),
-            const Text('Password:'),
-            SelectableText(
-              defaultPassword,
-              style: const TextStyle(
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              // Auto-fill credentials
-              emailController.text = defaultEmail;
-              passwordController.text = defaultPassword;
-              Get.back();
-            },
-            child: const Text('Auto-fill'),
-          ),
-          TextButton(
-            onPressed: () => Get.back(),
-            child: const Text('Close'),
-          ),
-        ],
-      ),
-    );
+  void forgotPassword() {
+    Get.toNamed('/forgot-password');
   }
 
   void openTermsAndConditions() {

@@ -5,6 +5,7 @@ abstract class Routes {
   static const SPLASH = _Paths.SPLASH;
   static const AUTH = _Paths.AUTH;
   static const LOGIN = _Paths.LOGIN;
+  static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
   static const HOME = _Paths.HOME;
   static const MAP = _Paths.MAP;
   static const RESTAURANT = _Paths.RESTAURANT;
@@ -20,6 +21,7 @@ abstract class _Paths {
   static const SPLASH = '/splash';
   static const AUTH = '/auth';
   static const LOGIN = '/login';
+  static const FORGOT_PASSWORD = '/forgot-password';
   static const HOME = '/home';
   static const MAP = '/map';
   static const RESTAURANT = '/restaurant';

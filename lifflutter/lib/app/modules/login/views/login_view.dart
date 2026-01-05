@@ -71,8 +71,8 @@ class LoginView extends GetView<LoginController> {
 
               const SizedBox(height: 8),
 
-              // Show default credentials helper
-              _buildCredentialsHelper(),
+              // Forgot Password link
+              _buildForgotPasswordLink(),
 
               const SizedBox(height: 16),
 
@@ -277,16 +277,18 @@ class LoginView extends GetView<LoginController> {
     ));
   }
 
-  Widget _buildCredentialsHelper() {
+  Widget _buildForgotPasswordLink() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        TextButton.icon(
-          onPressed: () => controller.showDefaultCredentials(),
-          icon: const Icon(Icons.info_outline, size: 16),
-          label: const Text(
-            'Show default credentials',
-            style: TextStyle(fontSize: 12),
+        TextButton(
+          onPressed: () => controller.forgotPassword(),
+          child: const Text(
+            'Forgot password?',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ],
