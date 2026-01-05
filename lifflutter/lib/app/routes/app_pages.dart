@@ -7,6 +7,8 @@ import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/auth_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/map/bindings/map_binding.dart';
+import '../modules/map/views/map_view.dart';
 import '../modules/restaurant/bindings/restaurant_binding.dart';
 import '../modules/restaurant/views/restaurant_view.dart';
 import '../modules/cart/bindings/cart_binding.dart';
@@ -47,6 +49,11 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.MAP,
+      page: () => const MapView(),
+      binding: MapBinding(),
     ),
     GetPage(
       name: _Paths.RESTAURANT,

@@ -13,6 +13,8 @@ class Restaurant {
   final String address;
   final List<String> tags;
   final double distance;
+  final double latitude;
+  final double longitude;
 
   Restaurant({
     required this.id,
@@ -29,6 +31,8 @@ class Restaurant {
     required this.address,
     required this.tags,
     required this.distance,
+    required this.latitude,
+    required this.longitude,
   });
 
   factory Restaurant.fromJson(Map<String, dynamic> json) {
@@ -47,6 +51,8 @@ class Restaurant {
       address: json['address'] ?? '',
       tags: List<String>.from(json['tags'] ?? []),
       distance: (json['distance'] ?? 0).toDouble(),
+      latitude: (json['latitude'] ?? 48.1351).toDouble(), // Default to Munich
+      longitude: (json['longitude'] ?? 11.5820).toDouble(),
     );
   }
 
@@ -66,6 +72,8 @@ class Restaurant {
       'address': address,
       'tags': tags,
       'distance': distance,
+      'latitude': latitude,
+      'longitude': longitude,
     };
   }
 }

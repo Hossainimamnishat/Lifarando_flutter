@@ -87,6 +87,11 @@ class HomeView extends GetView<HomeController> {
           ],
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.map_outlined),
+            onPressed: () => Get.toNamed('/map'),
+            tooltip: 'View on Map',
+          ),
           Stack(
             children: [
               IconButton(
