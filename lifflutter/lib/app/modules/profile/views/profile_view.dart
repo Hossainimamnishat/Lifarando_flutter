@@ -89,10 +89,12 @@ class ProfileView extends GetView<ProfileController> {
         ],
       ),
       body: SafeArea(
-        child: ListView(
+        child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(16),
-          children: [
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
             _buildProfileHeader(),
             const SizedBox(height: 24),
             _buildMenuSection('Account', [
@@ -122,7 +124,9 @@ class ProfileView extends GetView<ProfileController> {
             const SizedBox(height: 24),
             _buildLogoutButton(),
             const SizedBox(height: 24), // Extra padding at bottom
-          ],
+              ],
+            ),
+          ),
         ),
       ),
     );
