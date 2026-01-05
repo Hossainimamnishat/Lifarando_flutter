@@ -12,21 +12,13 @@ class AuthController extends GetxController {
   }
 
   void navigateToCreateAccount() {
-    // TODO: Navigate to create account page when implemented
-    Get.snackbar(
-      'Coming Soon',
-      'Create account feature will be available soon',
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    // Navigate to login/create account page
+    Get.toNamed(Routes.LOGIN);
   }
 
   void navigateToLogin() {
-    // TODO: Navigate to login details page when implemented
-    Get.snackbar(
-      'Coming Soon',
-      'Login feature will be available soon',
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    // Navigate to login/create account page
+    Get.toNamed(Routes.LOGIN);
   }
 
   void selectCountry(Country country) {
