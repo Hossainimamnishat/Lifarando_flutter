@@ -66,8 +66,18 @@ class LoginView extends GetView<LoginController> {
 
               const SizedBox(height: 16),
 
-              // Get Verification Code Button
-              _buildVerificationButton(),
+              // Password Input Field
+              _buildPasswordField(),
+
+              const SizedBox(height: 8),
+
+              // Show default credentials helper
+              _buildCredentialsHelper(),
+
+              const SizedBox(height: 16),
+
+              // Login Button
+              _buildLoginButton(),
 
               const SizedBox(height: 32),
 
@@ -224,6 +234,94 @@ class LoginView extends GetView<LoginController> {
         ),
       ),
     );
+  }
+
+  Widget _buildPasswordField() {
+    return Obx(() => TextField(
+      controller: controller.passwordController,
+      obscureText: controller.obscurePassword.value,
+      decoration: InputDecoration(
+        hintText: 'Password',
+        hintStyle: TextStyle(
+          color: Colors.grey.shade400,
+          fontSize: 16,
+        ),
+        filled: true,
+        fillColor: Colors.grey.shade50,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.grey.shade300),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.grey.shade300),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.primary, width: 2),
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 18,
+        ),
+        suffixIcon: IconButton(
+          icon: Icon(
+            controller.obscurePassword.value
+                ? Icons.visibility_off
+                : Icons.visibility,
+            color: Colors.grey,
+          ),
+          onPressed: controller.togglePasswordVisibility,
+        ),
+      ),
+    ));
+  }
+
+  Widget _buildCredentialsHelper() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        TextButton.icon(
+          onPressed: () => controller.showDefaultCredentials(),
+          icon: const Icon(Icons.info_outline, size: 16),
+          label: const Text(
+            'Show default credentials',
+            style: TextStyle(fontSize: 12),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLoginButton() {
+    return Obx(() => ElevatedButton(
+      onPressed: controller.isLoading.value ? null : controller.login,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.primary,
+        foregroundColor: Colors.white,
+        padding: const EdgeInsets.symmetric(vertical: 18),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+        elevation: 0,
+      ),
+      child: controller.isLoading.value
+          ? const SizedBox(
+              height: 20,
+              width: 20,
+              child: CircularProgressIndicator(
+                color: Colors.white,
+                strokeWidth: 2,
+              ),
+            )
+          : const Text(
+              'Login',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+    ));
   }
 
   Widget _buildVerificationButton() {
