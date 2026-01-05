@@ -19,6 +19,12 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
+    configurations {
+        all {
+            exclude(group = "com.google.android.play", module = "core")
+        }
+    }
+
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.lifflutter"
@@ -69,8 +75,8 @@ flutter {
 }
 
 dependencies {
-    implementation("com.google.android.play:core:1.10.3")
-    // optional but recommended for newer playcore task APIs:
-    implementation("com.google.android.play:core-common:2.0.3")
+    // Use the newer unified Play Core KTX library to avoid duplicate classes
+    implementation("com.google.android.play:app-update:2.1.0")
+    implementation("com.google.android.play:app-update-ktx:2.1.0")
 }
 
